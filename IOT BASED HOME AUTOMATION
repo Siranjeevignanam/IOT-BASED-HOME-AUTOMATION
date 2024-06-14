@@ -1,0 +1,84 @@
+#define BLYNK_TEMPLATE_ID &quot;TMPL35PaaZ8mQ&quot;
+#define BLYNK_TEMPLATE_NAME &quot;NodeMcu&quot;
+#define BLYNK_AUTH_TOKEN &quot;PGXBVENSul_ABhzUIPk493tzQQH7x4dp&quot;
+#define BLYNK_PRINT Serial
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;BlynkSimpleEsp8266.h&gt;
+char auth[] = BLYNK_AUTH_TOKEN;
+char ssid[] = &quot;# hello&quot;;
+char pass[] = “123456789&quot;;
+BLYNK_WRITE(V0)
+{
+int value = param.asInt();
+Serial.println(value);
+if(value == 1)
+{
+digitalWrite(D5, LOW);
+Serial.println(&quot;LED ON&quot;);
+}
+if(value == 0)
+{
+digitalWrite(D5, HIGH);
+Serial.println(&quot;LED OFF&quot;);
+}
+}
+BLYNK_WRITE(V1)
+{
+int value = param.asInt();
+Serial.println(value);
+if(value == 1)
+{
+digitalWrite(D6, LOW);
+Serial.println(&quot;LED ON&quot;);
+}
+if(value == 0)
+{
+
+digitalWrite(D6, HIGH);
+Serial.println(&quot;LED OFF&quot;);
+}
+}
+BLYNK_WRITE(V2)
+{
+int value = param.asInt();
+Serial.println(value);
+if(value == 1)
+{
+digitalWrite(D7, LOW);
+Serial.println(&quot;LED ON&quot;);
+}
+if(value == 0)
+{
+digitalWrite(D7, HIGH);
+Serial.println(&quot;LED OFF&quot;);
+}
+}
+BLYNK_WRITE(V3)
+{
+int value = param.asInt();
+Serial.println(value);
+if(value == 1)
+{
+digitalWrite(D8, LOW);
+Serial.println(&quot;LED ON&quot;);
+}
+if(value == 0)
+{
+digitalWrite(D8, HIGH);
+Serial.println(&quot;LED OFF&quot;);
+}
+}
+void setup()
+{
+Serial.begin(115200);
+
+Blynk.begin(auth, ssid, pass);
+pinmode(D5,OUTPUT);
+pinMode(D6,OUTPUT);
+pinMode(D7,OUTPUT);
+pinMode(D8,OUTPUT);
+}
+void loop()
+{
+Blynk.run();
+}
